@@ -2,10 +2,15 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+import ExpenseForm from './components/ExpenseForm.jsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [expenses, setExpenses] = useState([])
+
+  function onAddExpense(expense) {
+    setExpenses((currentExpenses) => [...currentExpenses, expense])
+  }
 
   return (
     <>
@@ -21,13 +26,7 @@ function App() {
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        <ExpenseForm onAddExpense={onAddExpense} />
       </section>
 
       <div className="ticks"></div>
